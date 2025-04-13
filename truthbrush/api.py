@@ -9,6 +9,9 @@ import logging
 import os
 from dotenv import load_dotenv
 
+class AuthenticationError(Exception):
+    pass
+
 load_dotenv()  # take environment variables from .env.
 
 logging.basicConfig(
@@ -458,7 +461,7 @@ class Api:
                 url,
                 json=payload,
                 proxies=proxies,
-                impersonate="chrome123",
+                impersonate="chrome134",
                 headers={
                     "User-Agent": USER_AGENT,
                 },
@@ -466,7 +469,15 @@ class Api:
             sess_req.raise_for_status()
         except requests.RequestsError as e:
             logger.error(f"Failed login request: {str(e)}")
-            raise SystemExit('Cannot authenticate to .')
+
+            if e.response is not None:
+                print("\nResponse Headers:")
+                for key, value in e.response.headers.items():
+                    print(f"{key}: {value}")
+
+            raise AuthenticationError(
+                "Failed to authenticate with truthsocial.com"
+            )
 
         if not sess_req.json()["access_token"]:
             raise ValueError("Invalid truthsocial.com credentials provided!")
