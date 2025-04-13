@@ -461,7 +461,7 @@ class Api:
                 url,
                 json=payload,
                 proxies=proxies,
-                impersonate="chrome134",
+                impersonate="chrome132",
                 headers={
                     "User-Agent": USER_AGENT,
                 },
