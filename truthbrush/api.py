@@ -104,7 +104,7 @@ class Api:
                 API_BASE_URL + url,
                 params=params,
                 proxies=proxies,
-                impersonate="chrome123",
+                impersonate="chrome131",
                 headers={
                     "Authorization": "Bearer " + self.auth_id,
                     "User-Agent": USER_AGENT,
@@ -135,7 +135,7 @@ class Api:
                 next_link,
                 params=params,
                 proxies=proxies,
-                impersonate="chrome123",
+                impersonate="chrome131",
                 headers={
                     "Authorization": "Bearer " + self.auth_id,
                     "User-Agent": USER_AGENT,
@@ -461,7 +461,7 @@ class Api:
                 url,
                 json=payload,
                 proxies=proxies,
-                impersonate="chrome132",
+                impersonate="chrome131",
                 headers={
                     "User-Agent": USER_AGENT,
                 },
